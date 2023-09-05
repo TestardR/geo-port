@@ -35,12 +35,12 @@ func TestCanValidatePort(t *testing.T) {
 	t.Run("with an invalid port", func(t *testing.T) {
 		port := NewPort(
 			NewPortID("AEFJR"),
-			"", // name should not be empty string
-			"Al Fujayrah",
+			"", // name should not be an empty string
+			"", // city should not be an empty string
 			"United Arab Emirates",
 			[]string{},
 			[]string{},
-			NewCoordinates(25.12, 0), // longitude should not be 0
+			NewCoordinates(25.12, 0),
 			"Ajman",
 			"Asia/Dubai",
 			[]string{"AEFJR"},
@@ -51,7 +51,7 @@ func TestCanValidatePort(t *testing.T) {
 
 		expectedErrors := []error{
 			errors.New("name is required"),
-			errors.New("coordinates are required"),
+			errors.New("city is required"),
 		}
 
 		violations := portValidator.Validate(port)

@@ -44,7 +44,7 @@ func TestPortService(t *testing.T) {
 	portStore := &mockedPortStore{}
 	portValidator := &mockedPortValidator{}
 
-	portService := NewService(
+	portService := NewPortService(
 		portStore,
 		portValidator,
 	)

@@ -17,9 +17,8 @@ func (v portValidator) Validate(port Port) []error {
 		violations = append(violations, errors.New("name is required"))
 	}
 
-	if port.Coordinates().Longitude() == 0 || port.Coordinates().Latitude() == 0 {
-		violations = append(violations, errors.New("coordinates are required"))
+	if port.City() == "" {
+		violations = append(violations, errors.New("city is required"))
 	}
-
 	return violations
 }

@@ -18,22 +18,22 @@ type portValidator interface {
 	Validate(port domain.Port) []error
 }
 
-type service struct {
+type portService struct {
 	portStore     portFindAddUpdater
 	portValidator portValidator
 }
 
-func NewService(
+func NewPortService(
 	portStore portFindAddUpdater,
 	portValidator portValidator,
-) *service {
-	return &service{
+) *portService {
+	return &portService{
 		portStore:     portStore,
 		portValidator: portValidator,
 	}
 }
 
-func (s *service) HandleAddOrUpdatePort(
+func (s *portService) HandleAddOrUpdatePort(
 	ctx context.Context,
 	command command.AddOrUpdatePort,
 ) error {
@@ -51,7 +51,7 @@ func (s *service) HandleAddOrUpdatePort(
 	return s.handleUpdatePort(ctx, command, port)
 }
 
-func (s *service) handleAddPort(
+func (s *portService) handleAddPort(
 	ctx context.Context,
 	command command.AddOrUpdatePort,
 ) error {
@@ -72,7 +72,9 @@ func (s *service) handleAddPort(
 
 	errs := s.portValidator.Validate(port)
 	if len(errs) > 0 {
-		return errors.Join(errs...)
+		if len(errs) > 0 {
+			return fmt.Errorf("failed to add port with id %s: %v", portID.Id(), errors.Join(errs...))
+		}
 	}
 
 	err := s.portStore.Add(ctx, port)
@@ -83,7 +85,7 @@ func (s *service) handleAddPort(
 	return nil
 }
 
-func (s *service) handleUpdatePort(
+func (s *portService) handleUpdatePort(
 	ctx context.Context,
 	command command.AddOrUpdatePort,
 	port domain.Port,
@@ -105,7 +107,7 @@ func (s *service) handleUpdatePort(
 
 	errs := s.portValidator.Validate(updatePortChange)
 	if len(errs) > 0 {
-		return errors.Join(errs...)
+		return fmt.Errorf("failed to update port with id %s: %v", portID.Id(), errors.Join(errs...))
 	}
 
 	err := s.portStore.Update(ctx, updatePortChange)
