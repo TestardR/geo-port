@@ -1,6 +1,6 @@
 NAME=geo-port
 
-.PHONY: deps fmt test clean vet
+.PHONY: deps fmt test clean vet docker-build
 
 deps:
 	@echo "Installing dependencies ..."
@@ -22,6 +22,13 @@ build: deps clean
 	@mkdir -p ./build
 	@go build -o ./build/$(NAME)
 	@echo "Build done"
+
+docker-build: deps clean
+	@echo "Building Docker image ..."
+	@env GOOS=linux CGO_ENABLED=0 go build -o ./bin/$(NAME)
+	@docker build -t $(NAME) .
+	@rm -rf ./bin
+	@echo "Building Docker image, done!"
 
 clean:
 	@echo "Cleaning ..."
