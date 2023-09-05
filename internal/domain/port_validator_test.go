@@ -19,7 +19,7 @@ func TestCanValidatePort(t *testing.T) {
 			"United Arab Emirates",
 			[]string{},
 			[]string{},
-			NewCoordinates(56.33, 25.12),
+			NewCoordinates(25.12, 56.33),
 			"Ajman",
 			"Asia/Dubai",
 			[]string{"AEFJR"},
@@ -40,7 +40,7 @@ func TestCanValidatePort(t *testing.T) {
 			"United Arab Emirates",
 			[]string{},
 			[]string{},
-			NewCoordinates(56.33, 0), // latitude should not be 0
+			NewCoordinates(25.12, 0), // longitude should not be 0
 			"Ajman",
 			"Asia/Dubai",
 			[]string{"AEFJR"},

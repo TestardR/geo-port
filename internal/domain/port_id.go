@@ -1,13 +1,13 @@
 package domain
 
-type portID struct {
+type PortID struct {
 	value string
 }
 
-func NewPortID(value string) portID {
-	return portID{value: value}
+func NewPortID(value string) PortID {
+	return PortID{value: value}
 }
 
-func (id portID) Id() string {
+func (id PortID) Id() string {
 	return id.value
 }

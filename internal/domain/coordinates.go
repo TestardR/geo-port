@@ -1,24 +1,26 @@
 package domain
 
+// Coordinates Value Object. Be careful latitude should come first:
+// https://support.google.com/maps/answer/18539
 type coordinates struct {
-	longitude float64
 	latitude  float64
+	longitude float64
 }
 
 func NewCoordinates(
-	longitude float64,
 	latitude float64,
+	longitude float64,
 ) coordinates {
 	return coordinates{
-		longitude: longitude,
 		latitude:  latitude,
+		longitude: longitude,
 	}
-}
-
-func (c coordinates) Longitude() float64 {
-	return c.longitude
 }
 
 func (c coordinates) Latitude() float64 {
 	return c.latitude
+}
+
+func (c coordinates) Longitude() float64 {
+	return c.longitude
 }

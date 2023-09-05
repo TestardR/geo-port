@@ -1,6 +1,6 @@
 NAME=geo-port
 
-.PHONY: deps fmt test clean install vet
+.PHONY: deps fmt test clean vet
 
 deps:
 	@echo "Installing dependencies ..."
@@ -22,11 +22,6 @@ build: deps clean
 	@mkdir -p ./build
 	@go build -o ./build/$(NAME)
 	@echo "Build done"
-
-install:
-	@echo "Installing ..."
-	@go install
-	@echo "Installed"
 
 clean:
 	@echo "Cleaning ..."

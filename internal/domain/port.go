@@ -1,7 +1,7 @@
 package domain
 
-type port struct {
-	id          portID
+type Port struct {
+	id          PortID
 	name        string
 	city        string
 	country     string
@@ -15,7 +15,7 @@ type port struct {
 }
 
 func NewPort(
-	id portID,
+	id PortID,
 	name string,
 	city string,
 	country string,
@@ -26,8 +26,8 @@ func NewPort(
 	timezone string,
 	unlocs []string,
 	code string,
-) port {
-	return port{
+) Port {
+	return Port{
 		id:          id,
 		name:        name,
 		city:        city,
@@ -42,46 +42,77 @@ func NewPort(
 	}
 }
 
-func (p port) Id() portID {
+func (p Port) Id() PortID {
 	return p.id
 }
 
-func (p port) Name() string {
+func (p Port) Name() string {
 	return p.name
 }
 
-func (p port) City() string {
+func (p Port) City() string {
 	return p.city
 }
 
-func (p port) Country() string {
+func (p Port) Country() string {
 	return p.country
 }
 
-func (p port) Aliases() []string {
+func (p Port) Aliases() []string {
 	return p.aliases
 }
 
-func (p port) Regions() []string {
+func (p Port) Regions() []string {
 	return p.regions
 }
 
-func (p port) Coordinates() coordinates {
+func (p Port) Coordinates() coordinates {
 	return p.coordinates
 }
 
-func (p port) Province() string {
+func (p Port) Province() string {
 	return p.province
 }
 
-func (p port) Timezone() string {
+func (p Port) Timezone() string {
 	return p.timezone
 }
 
-func (p port) Unlocs() []string {
+func (p Port) Unlocs() []string {
 	return p.unlocs
 }
 
-func (p port) Code() string {
+func (p Port) Code() string {
 	return p.code
+}
+
+// UpdatePortChange encapsulate the business logic to update a port
+// Method could receive dedicated validator to update port.
+// It could return an updatePortChange struct which would better reflect domain intention.
+func (p Port) UpdatePortChange(
+	id PortID,
+	name string,
+	city string,
+	country string,
+	aliases []string,
+	regions []string,
+	coordinates coordinates,
+	province string,
+	timezone string,
+	unlocs []string,
+	code string,
+) Port {
+	return Port{
+		id:          id,
+		name:        name,
+		city:        city,
+		country:     country,
+		aliases:     aliases,
+		regions:     regions,
+		coordinates: coordinates,
+		province:    province,
+		timezone:    timezone,
+		unlocs:      unlocs,
+		code:        code,
+	}
 }

@@ -11,13 +11,13 @@ var (
 )
 
 type PortFinder interface {
-	Find(ctx context.Context, id portID) (port, error)
+	Find(ctx context.Context, id PortID) (Port, error)
 }
 
 type PortAdder interface {
-	Add(ctx context.Context, port port) error
+	Add(ctx context.Context, port Port) error
 }
 
 type PortUpdater interface {
-	Update(ctx context.Context, port port) error
+	Update(ctx context.Context, port Port) error
 }
