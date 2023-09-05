@@ -94,7 +94,6 @@ func TestPortService(t *testing.T) {
 	})
 
 	t.Run("can update an existing port", func(t *testing.T) {
-		g := gomega.NewWithT(t)
 		ctx := context.Background()
 
 		existingPort := domain.NewPort(
@@ -152,5 +151,5 @@ func TestPortService(t *testing.T) {
 		g.Expect(err).To(gomega.BeNil())
 	})
 
-	t.Skip("TODO: handle error paths")
+	t.Skip("TODO: handle error/unhappy paths")
 }

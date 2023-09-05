@@ -6,7 +6,7 @@ import (
 	"sync"
 )
 
-// portStore should have data models dedicated
+// portStore should have dedicated data models
 // and not store domain models. Domain models and data models should evolve separately
 type portStore struct {
 	mx sync.Mutex
