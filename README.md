@@ -6,7 +6,7 @@ This service has been built following several architecture paradigms:
 - [Command and Query Separation](https://martinfowler.com/bliki/CommandQuerySeparation.html) (CQS)
 - [SOLID](https://en.wikipedia.org/wiki/SOLID) principles
 
-### Architecture Diagram (Architecture as Code https://plantuml.com/component-diagram)
+### TODO: Architecture Diagram (Architecture as Code https://plantuml.com/component-diagram)
 
 ### Setup
 
