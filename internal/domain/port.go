@@ -1,6 +1,6 @@
 package domain
 
-type Port struct {
+type port struct {
 	id          portID
 	name        string
 	city        string
@@ -26,8 +26,8 @@ func NewPort(
 	timezone string,
 	unlocs []string,
 	code string,
-) Port {
-	return Port{
+) port {
+	return port{
 		id:          id,
 		name:        name,
 		city:        city,
@@ -42,46 +42,46 @@ func NewPort(
 	}
 }
 
-func (p Port) Id() portID {
+func (p port) Id() portID {
 	return p.id
 }
 
-func (p Port) Name() string {
+func (p port) Name() string {
 	return p.name
 }
 
-func (p Port) City() string {
+func (p port) City() string {
 	return p.city
 }
 
-func (p Port) Country() string {
+func (p port) Country() string {
 	return p.country
 }
 
-func (p Port) Aliases() []string {
+func (p port) Aliases() []string {
 	return p.aliases
 }
 
-func (p Port) Regions() []string {
+func (p port) Regions() []string {
 	return p.regions
 }
 
-func (p Port) Coordinates() coordinates {
+func (p port) Coordinates() coordinates {
 	return p.coordinates
 }
 
-func (p Port) Province() string {
+func (p port) Province() string {
 	return p.province
 }
 
-func (p Port) Timezone() string {
+func (p port) Timezone() string {
 	return p.timezone
 }
 
-func (p Port) Unlocs() []string {
+func (p port) Unlocs() []string {
 	return p.unlocs
 }
 
-func (p Port) Code() string {
+func (p port) Code() string {
 	return p.code
 }
