@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+
 	"github.com/TestardR/geo-port/internal/application/command"
 	"github.com/TestardR/geo-port/internal/domain"
 )
@@ -73,13 +74,13 @@ func (s *portService) handleAddPort(
 	errs := s.portValidator.Validate(port)
 	if len(errs) > 0 {
 		if len(errs) > 0 {
-			return fmt.Errorf("failed to add port with id %s: %v", portID.Id(), errors.Join(errs...))
+			return fmt.Errorf("failed to add port with id %s: %v", portID.ID(), errors.Join(errs...))
 		}
 	}
 
 	err := s.portStore.Add(ctx, port)
 	if err != nil {
-		return fmt.Errorf("failed to add port with id %s: %v", portID.Id(), err)
+		return fmt.Errorf("failed to add port with id %s: %v", portID.ID(), err)
 	}
 
 	return nil
@@ -107,12 +108,12 @@ func (s *portService) handleUpdatePort(
 
 	errs := s.portValidator.Validate(updatePortChange)
 	if len(errs) > 0 {
-		return fmt.Errorf("failed to update port with id %s: %v", portID.Id(), errors.Join(errs...))
+		return fmt.Errorf("failed to update port with id %s: %v", portID.ID(), errors.Join(errs...))
 	}
 
 	err := s.portStore.Update(ctx, updatePortChange)
 	if err != nil {
-		return fmt.Errorf("failed to update port with id %s: %v", portID.Id(), err)
+		return fmt.Errorf("failed to update port with id %s: %v", portID.ID(), err)
 	}
 
 	return nil

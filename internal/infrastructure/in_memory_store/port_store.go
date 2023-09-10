@@ -2,8 +2,9 @@ package in_memory_store
 
 import (
 	"context"
-	"github.com/TestardR/geo-port/internal/domain"
 	"sync"
+
+	"github.com/TestardR/geo-port/internal/domain"
 )
 
 // portStore should have dedicated data models
@@ -37,12 +38,12 @@ func (s *portStore) Add(ctx context.Context, port domain.Port) error {
 	s.mx.Lock()
 	defer s.mx.Unlock()
 
-	_, isFound := s.db[port.Id()]
+	_, isFound := s.db[port.ID()]
 	if isFound {
 		return domain.ErrPortAlreadyExists
 	}
 
-	s.db[port.Id()] = port
+	s.db[port.ID()] = port
 
 	return nil
 }
@@ -51,12 +52,12 @@ func (s *portStore) Update(ctx context.Context, port domain.Port) error {
 	s.mx.Lock()
 	defer s.mx.Unlock()
 
-	_, isFound := s.db[port.Id()]
+	_, isFound := s.db[port.ID()]
 	if !isFound {
 		return domain.ErrPortNotFound
 	}
 
-	s.db[port.Id()] = port
+	s.db[port.ID()] = port
 
 	return nil
 }

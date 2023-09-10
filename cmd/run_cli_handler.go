@@ -2,18 +2,18 @@ package cmd
 
 import (
 	"context"
-	"errors"
 	"fmt"
-	"github.com/TestardR/geo-port/internal/application/service"
-	"github.com/TestardR/geo-port/internal/domain"
-	portCLI "github.com/TestardR/geo-port/internal/infrastructure/cli"
-	inMemoryStore "github.com/TestardR/geo-port/internal/infrastructure/in_memory_store"
-	"github.com/urfave/cli/v2"
 	"log/slog"
 	"os"
 	"os/signal"
 	"sync"
 	"syscall"
+
+	"github.com/TestardR/geo-port/internal/application/service"
+	"github.com/TestardR/geo-port/internal/domain"
+	portCLI "github.com/TestardR/geo-port/internal/infrastructure/cli"
+	inMemoryStore "github.com/TestardR/geo-port/internal/infrastructure/in_memory_store"
+	"github.com/urfave/cli/v2"
 )
 
 const AddOrUpdateFilePathArgument = "filepath"
@@ -36,7 +36,7 @@ func RunAsCLIHandler(
 	// Rough argument validation
 	filePathArgument := cliCtx.String(AddOrUpdateFilePathArgument)
 	if len(filePathArgument) == 0 {
-		return errors.New(fmt.Sprintf("missing --%s option", AddOrUpdateFilePathArgument))
+		return fmt.Errorf("missing --%s option", AddOrUpdateFilePathArgument)
 	}
 
 	portSvc := service.NewPortService(

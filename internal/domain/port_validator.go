@@ -20,5 +20,6 @@ func (v portValidator) Validate(port Port) []error {
 	if port.City() == "" {
 		violations = append(violations, errors.New("city is required"))
 	}
+
 	return violations
 }

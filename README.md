@@ -21,6 +21,16 @@ Install dependencies by running:
 $ make deps
 ```
 
+Install golangci-lint locally for Go linting (https://golangci-lint.run/)
+
+To install 
+```bash
+# binary will be $(go env GOPATH)/bin/golangci-lint
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.54.2
+
+golangci-lint --version
+```
+
 ### Run unit tests
 
 ```bash

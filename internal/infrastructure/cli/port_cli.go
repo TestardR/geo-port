@@ -3,8 +3,9 @@ package cli
 import (
 	"context"
 	"encoding/json"
-	"github.com/TestardR/geo-port/internal/application/command"
 	"os"
+
+	"github.com/TestardR/geo-port/internal/application/command"
 )
 
 type portHandler interface {

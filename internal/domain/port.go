@@ -42,7 +42,7 @@ func NewPort(
 	}
 }
 
-func (p Port) Id() PortID {
+func (p Port) ID() PortID {
 	return p.id
 }
 

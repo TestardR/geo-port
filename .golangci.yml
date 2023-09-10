@@ -1,4 +1,28 @@
+run:
+  tests: false
+
 linters:
   enable-all: true
   disable:
     - lll
+    - funlen
+    - forbidigo
+    - golint
+    - goerr113
+    - varnamelen
+    - ifshort
+    - wrapcheck
+    - forcetypeassert
+    - exhaustivestruct
+    - errorlint
+    - depguard
+    - wsl
+    - revive
+    - godox
+    - godot
+    - gofumpt
+    - gci
+    - exhaustruct
+    - nosnakecase
+    - staticcheck
+    - stylecheck

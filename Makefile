@@ -1,10 +1,11 @@
 NAME=geo-port
 
-.PHONY: deps fmt test clean vet docker-build
+.PHONY: deps fmt test clean vet docker-build lint
 
 deps:
 	@echo "Installing dependencies ..."
 	@go mod tidy && go mod download
+	@go install github.com/onsi/ginkgo/v2/ginkgo
 	@echo "Installing dependencies, done!"
 
 fmt:
@@ -39,3 +40,6 @@ vet:
 	@echo "Running vet ..."
 	@go vet ./...
 	@echo "Running vet, done!"
+
+lint:
+	@golangci-lint run --tests=false

@@ -8,6 +8,6 @@ func NewPortID(value string) PortID {
 	return PortID{value: value}
 }
 
-func (id PortID) Id() string {
+func (id PortID) ID() string {
 	return id.value
 }

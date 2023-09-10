@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/TestardR/geo-port/cmd"
 	"log"
 	"os"
 
+	"github.com/TestardR/geo-port/cmd"
 	"github.com/urfave/cli/v2"
 )
 
