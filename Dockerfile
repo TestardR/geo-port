@@ -1,14 +1,10 @@
-FROM golang:1.21-alpine3.18
+FROM golang:1.21-alpine3.18 as builder
 
-WORKDIR /app
+WORKDIR /src
+ADD . /src
+RUN go build -o /bin/geo-port
 
-COPY ./bin/geo-port .
+FROM scratch
+COPY --from=builder /bin/geo-port /bin/geo-port
 
-# Image should be run as a non-root user for improved security
-# Principle of least priviledge applies to ensure limiting access to system resources
-# https://snyk.io/blog/containerizing-go-applications-with-docker/ & https://www.baeldung.com/linux/docker-alpine-add-user
-# To refine
-RUN adduser -D gp-user
-USER gp-user
-
-ENTRYPOINT ["./geo-port"]
+ENTRYPOINT ["/bin/geo-port"]
