@@ -26,9 +26,7 @@ build: deps clean
 
 docker-build: deps clean
 	@echo "Building Docker image ..."
-	@env GOOS=linux CGO_ENABLED=0 go build -o ./bin/$(NAME)
 	@docker build -t $(NAME) .
-	@rm -rf ./bin
 	@echo "Building Docker image, done!"
 
 clean:
