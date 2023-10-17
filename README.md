@@ -6,7 +6,9 @@ This service has been built following several architecture paradigms:
 - [Command and Query Separation](https://martinfowler.com/bliki/CommandQuerySeparation.html) (CQS)
 - [SOLID](https://en.wikipedia.org/wiki/SOLID) principles
 
-### TODO: Architecture Diagram (Architecture as Code https://plantuml.com/component-diagram)
+### Architecture
+
+![C4 - components diagram](./docs/geo-port-components.png)
 
 ### Setup
 

@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+package "Infrastructure - CLI" #EB937F {
+   [Add or Update Ports] as add_or_update_ports
+}
+
+package "Application" #ADD1B2 {
+    add_or_update_ports ---> [Port Service]
+
+}
+
+package "Domain" #B4A7E5 {
+    [Port]
+    [PortId]
+
+    [Port Service] --> [Port]
+}
+
+package "Infrastructure - Persistence" #EB937F {
+     database "In Memory" {
+          folder "hashmap" {
+            [port_id: port]
+          }
+}
+
+[Port] -- [port_id: port]
+[PortId] -- [port_id: port]
+
+@enduml
